@@ -128,8 +128,8 @@ class HelloWorld extends React.Component {
     return (
       // <TouchBox></TouchBox>
       //<FlexBox></FlexBox>
-      // <ImageBox></ImageBox>
-      <ListView></ListView>
+      <ImageBox></ImageBox>
+      // <ListView></ListView>
       // <NativeConnectBox></NativeConnectBox>
     )
   }

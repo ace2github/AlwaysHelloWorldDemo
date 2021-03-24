@@ -6,6 +6,8 @@
 //
 
 #import "MainViewController.h"
+#import "LocalLoadViewController.h"
+
 #import <React/RCTBridge.h>
 #import <React/RCTRootView.h>
 
@@ -30,6 +32,14 @@
   [btn setTitleColor:UIColor.orangeColor forState:UIControlStateNormal];
   [self.view addSubview:btn];
   [btn addTarget:self action:@selector(clickHandler) forControlEvents:UIControlEventTouchUpInside];
+  
+  
+  btn = [UIButton buttonWithType:UIButtonTypeCustom];
+  btn.frame = CGRectMake(100, 200, 150, 40);
+  [btn setTitle:@"跳转-本地加载RN" forState:UIControlStateNormal];
+  [btn setTitleColor:UIColor.orangeColor forState:UIControlStateNormal];
+  [self.view addSubview:btn];
+  [btn addTarget:self action:@selector(clickLocalLoadHandler) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)clickHandler {
@@ -43,6 +53,12 @@
 
   [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void)clickLocalLoadHandler {
+  LocalLoadViewController *vc = [[LocalLoadViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
+}
+
 /*
 #pragma mark - Navigation
 
