@@ -129,8 +129,8 @@ class HelloWorld extends React.Component {
       // <TouchBox></TouchBox>
       //<FlexBox></FlexBox>
       // <ImageBox></ImageBox>
-      // <ListView></ListView>
-      <NativeConnectBox></NativeConnectBox>
+      <ListView></ListView>
+      // <NativeConnectBox></NativeConnectBox>
     )
   }
 }
@@ -366,18 +366,72 @@ class ImageBox extends React.Component {
 class ListCellItem extends React.Component {
   render(){
     return(
-      <View style={listViewStyles.item}>
-        <Text style={listViewStyles.itemTitle}>{this.props.title}</Text>
+      <View style={CellStyles.backgroundView}>
+        <View style={CellStyles.header}>
+          <Image style={CellStyles.icon} source={this.props.icon} />
+          <Text style={CellStyles.title}>{this.props.title}</Text>
+        </View>
+        <View style={CellStyles.content}>
+          <Text style={CellStyles.contentText}>{this.props.content}</Text>
+        </View>
+        <View style={CellStyles.line}>
+        </View>
       </View>
     );
   }
 }
+const CellStyles = StyleSheet.create({
+    backgroundView: {
+      marginTop: 10,
+      marginHorizontal: 15,
+      backgroundColor: '#fff',
+      flexDirection: 'column'
+    },
+    header: {
+      height: 50,
+      flexDirection: 'row',
+      alignItems: 'center',
+      //backgroundColor: "darkorange",
+    },
+
+    content: {
+      //backgroundColor: "darkorange",
+      marginTop: 6,
+      minHeight: 0
+    },
+
+    icon: {
+      backgroundColor: '#efefef',
+      width: 40,
+      height: 40,
+      borderRadius: 20
+    },
+
+    title: {
+      marginHorizontal: 8,
+      fontSize: 15,
+      textAlign:'left',
+      height: 30,
+      lineHeight: 30,
+      color: '#333333'
+    },
+    contentText: {
+      fontSize: 16,
+      color: '#1c1c1c',
+      lineHeight: 20,
+    },
+    line:{
+      backgroundColor: '#efefef',
+      height: 1,
+      marginTop: 20,
+    }
+});
 
 class ListView extends React.Component {
   dataList = [];
 
   renderCellItem = ({ item }) => (
-    <ListCellItem title={item.title} />
+    <ListCellItem title={item.title} content={item.content} icon={item.icon}/>
   );
 
   constructor (props) {
@@ -385,7 +439,11 @@ class ListView extends React.Component {
 
     // 数据源
     for(var i=0; i< 32; i++) {
-      this.dataList.push({id:i, title: 'title ' + i})
+      this.dataList.push({
+        id:i,
+        icon: require('./resources/static_image.png'),
+        title: '李爱老师 ' + i,
+        content:'我们班的小主持人手工真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒！'})
     }
   }
 
@@ -403,6 +461,7 @@ class ListView extends React.Component {
   }
 }
 
+
 const listViewStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -415,11 +474,6 @@ const listViewStyles = StyleSheet.create({
     marginVertical: 2,
     marginHorizontal: 12,
     height: 40,
-  },
-  itemTitle: {
-    fontSize: 16,
-    textAlign:'left',
-    lineHeight: (40 - 2*8)
   },
 });
 
