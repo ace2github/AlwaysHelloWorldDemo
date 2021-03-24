@@ -430,21 +430,13 @@ const CellStyles = StyleSheet.create({
 class ListView extends React.Component {
   dataList = [];
 
-  renderCellItem = ({ item }) => (
-    <ListCellItem title={item.title} content={item.content} icon={item.icon}/>
-  );
-
   constructor (props) {
     super(props);
-
-    // 数据源
-    for(var i=0; i< 32; i++) {
-      this.dataList.push({
-        id:i,
-        icon: require('./resources/static_image.png'),
-        title: '李爱老师 ' + i,
-        content:'我们班的小主持人手工真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒！'})
+    this.state = {
+      refreshing: false
     }
+
+    this.handleRefresh();
   }
 
   render() {
@@ -455,9 +447,66 @@ class ListView extends React.Component {
           renderItem={this.renderCellItem}
           initialNumToRender={16}
           initialScrollIndex={0}
+          keyExtractor={item => item.id}
+          refreshing={this.state.refreshing}
+          onRefresh={this.handleRefresh}
+          onEndReached={this.handleLoadMore}
         />
       </SafeAreaView>
     )
+  }
+
+
+  renderCellItem = ({ item }) => (
+    <ListCellItem title={item.title} content={item.content} icon={item.icon}/>
+  );
+
+  pageNum = 0
+  handleRefresh = () => {
+    this.setState({
+      refreshing: true,
+    });
+
+    this.pageNum = 0;
+    this.startRequestDataList(' refresh', this.pageNum, (success, list)=>{
+      this.dataList.splice(0, this.dataList.length)
+      list.forEach((value)=>{
+        this.dataList.push(value)
+      });
+
+      this.setState({
+        refreshing: false,
+      });
+    });
+  }
+
+  handleLoadMore= ()=>{
+    this.startRequestDataList(' more', this.pageNum, (success, list)=>{
+      list.forEach((value)=>{
+        this.dataList.push(value)
+      });
+    });
+  }
+
+  startRequestDataList(prefix, page, callBack) {
+    setTimeout(()=>{
+      startIndex = page * 10;
+
+      list = []
+      for(var i=startIndex; i< 10+startIndex; i++) {
+        list.push({
+          id:i,
+          icon: require('./resources/static_image.png'),
+          title: '李爱老师 ' + i + prefix,
+          content:'我们班的小主持人手工真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒！'})
+      }
+
+      if (list.length > 0) {
+        this.pageNum += 1;
+      }
+
+      callBack(true, list)
+    }, 1 * 1000);
   }
 }
 
