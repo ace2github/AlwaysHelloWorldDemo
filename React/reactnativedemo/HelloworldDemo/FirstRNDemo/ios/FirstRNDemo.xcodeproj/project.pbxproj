@@ -14,10 +14,8 @@
 		1CDD7E4E2608733D00936542 /* RNConnectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD7E4D2608733D00936542 /* RNConnectManager.m */; };
 		1CDD7E54260AC69F00936542 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD7E53260AC69F00936542 /* MainViewController.m */; };
 		1CDD7E59260B262300936542 /* LocalLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD7E58260B262300936542 /* LocalLoadViewController.m */; };
-		1CDD7E62260B327100936542 /* app.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD7E5D260B327100936542 /* app.json */; };
-		1CDD7E63260B327100936542 /* dynamic.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD7E5F260B327100936542 /* dynamic.gif */; };
-		1CDD7E64260B327100936542 /* static_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD7E60260B327100936542 /* static_image.png */; };
 		1CDD7E65260B327100936542 /* index.ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD7E61260B327100936542 /* index.ios.bundle */; };
+		1CDD7E6B260B36B200936542 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD7E6A260B36B200936542 /* assets */; };
 		305E6900DEF93DBA5EC0F35E /* libPods-FirstRNDemo-FirstRNDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3A41A444FD33DC4E1A3B4D /* libPods-FirstRNDemo-FirstRNDemoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D751199266074B3453E259E5 /* libPods-FirstRNDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D9BFE4790417A4D935D25 /* libPods-FirstRNDemo.a */; };
@@ -49,10 +47,8 @@
 		1CDD7E53260AC69F00936542 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		1CDD7E57260B262300936542 /* LocalLoadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalLoadViewController.h; sourceTree = "<group>"; };
 		1CDD7E58260B262300936542 /* LocalLoadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalLoadViewController.m; sourceTree = "<group>"; };
-		1CDD7E5D260B327100936542 /* app.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app.json; sourceTree = "<group>"; };
-		1CDD7E5F260B327100936542 /* dynamic.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dynamic.gif; sourceTree = "<group>"; };
-		1CDD7E60260B327100936542 /* static_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = static_image.png; sourceTree = "<group>"; };
 		1CDD7E61260B327100936542 /* index.ios.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index.ios.bundle; sourceTree = "<group>"; };
+		1CDD7E6A260B36B200936542 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		73547E9B153CA6C8EC7F87E2 /* Pods-FirstRNDemo-FirstRNDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstRNDemo-FirstRNDemoTests.release.xcconfig"; path = "Target Support Files/Pods-FirstRNDemo-FirstRNDemoTests/Pods-FirstRNDemo-FirstRNDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FirstRNDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87999CF2D63DF69BF2C3AEE2 /* Pods-FirstRNDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstRNDemo.release.xcconfig"; path = "Target Support Files/Pods-FirstRNDemo/Pods-FirstRNDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,24 +126,6 @@
 			name = FirstRNDemo;
 			sourceTree = "<group>";
 		};
-		1CDD7E5C260B327100936542 /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				1CDD7E5D260B327100936542 /* app.json */,
-				1CDD7E5E260B327100936542 /* resources */,
-			);
-			path = assets;
-			sourceTree = "<group>";
-		};
-		1CDD7E5E260B327100936542 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				1CDD7E5F260B327100936542 /* dynamic.gif */,
-				1CDD7E60260B327100936542 /* static_image.png */,
-			);
-			path = resources;
-			sourceTree = "<group>";
-		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +146,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				1CDD7E5C260B327100936542 /* assets */,
+				1CDD7E6A260B36B200936542 /* assets */,
 				1CDD7E61260B327100936542 /* index.ios.bundle */,
 				13B07FAE1A68108700A75B9A /* FirstRNDemo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -285,12 +263,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CDD7E63260B327100936542 /* dynamic.gif in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				1CDD7E6B260B36B200936542 /* assets in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				1CDD7E65260B327100936542 /* index.ios.bundle in Resources */,
-				1CDD7E62260B327100936542 /* app.json in Resources */,
-				1CDD7E64260B327100936542 /* static_image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

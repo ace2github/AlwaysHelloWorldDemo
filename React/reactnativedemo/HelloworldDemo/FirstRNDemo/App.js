@@ -6,6 +6,7 @@
  * @flow strict-local
  */
 
+import NetworkManager from './NetworkManager'
 import React from 'react';
 import type {Node} from 'react';
 import {
@@ -33,94 +34,6 @@ import {
 
 
 /*******************************************************
-  Default
-*******************************************************/
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
-/* 代码中只会被创建 */
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-
-/*******************************************************
   HelloWorld
 *******************************************************/
 class HelloWorld extends React.Component {
@@ -128,8 +41,8 @@ class HelloWorld extends React.Component {
     return (
       // <TouchBox></TouchBox>
       //<FlexBox></FlexBox>
-      <ImageBox></ImageBox>
-      // <ListView></ListView>
+      //<ImageBox></ImageBox>
+      <ListView></ListView>
       // <NativeConnectBox></NativeConnectBox>
     )
   }
@@ -489,25 +402,34 @@ class ListView extends React.Component {
   }
 
   startRequestDataList(prefix, page, callBack) {
-    setTimeout(()=>{
-      startIndex = page * 10;
-
-      list = []
-      for(var i=startIndex; i< 10+startIndex; i++) {
-        list.push({
-          id:i,
-          icon: require('./resources/static_image.png'),
-          title: '李爱老师 ' + i + prefix,
-          content:'我们班的小主持人手工真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒！'})
-      }
-
-      if (list.length > 0) {
-        this.pageNum += 1;
-      }
-
-      callBack(true, list)
-    }, 1 * 1000);
+    url = 'https://www.fastmock.site/mock/4754dc7fe47c878f8ac1e5cc89dce04a/smart/list'
+    networkHandler = new NetworkManager;
+    networkHandler.postRequest(url, '{}', (response)=>{
+      callBack(true, response.body.list);
+    },(err)=>{
+      alert(err);
+    });
   }
+  // startRequestDataList(prefix, page, callBack) {
+  //   setTimeout(()=>{
+  //     startIndex = page * 10;
+  //
+  //     list = []
+  //     for(var i=startIndex; i< 10+startIndex; i++) {
+  //       list.push({
+  //         id:i,
+  //         icon: require('./resources/static_image.png'),
+  //         title: '李爱老师 ' + i + prefix,
+  //         content:'我们班的小主持人手工真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒、我们班的小主持人讲故事真是棒棒哒！'})
+  //     }
+  //
+  //     if (list.length > 0) {
+  //       this.pageNum += 1;
+  //     }
+  //
+  //     callBack(true, list)
+  //   }, 1 * 1000);
+  // }
 }
 
 
@@ -525,6 +447,96 @@ const listViewStyles = StyleSheet.create({
     height: 40,
   },
 });
+
+
+
+/*******************************************************
+  Default
+*******************************************************/
+const Section = ({children, title}): Node => {
+  const isDarkMode = useColorScheme() === 'dark';
+  return (
+    <View style={styles.sectionContainer}>
+      <Text
+        style={[
+          styles.sectionTitle,
+          {
+            color: isDarkMode ? Colors.white : Colors.black,
+          },
+        ]}>
+        {title}
+      </Text>
+      <Text
+        style={[
+          styles.sectionDescription,
+          {
+            color: isDarkMode ? Colors.light : Colors.dark,
+          },
+        ]}>
+        {children}
+      </Text>
+    </View>
+  );
+};
+
+const App: () => Node = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  return (
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <Header />
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}>
+          <Section title="Step One">
+            Edit <Text style={styles.highlight}>App.js</Text> to change this
+            screen and then come back to see your edits.
+          </Section>
+          <Section title="See Your Changes">
+            <ReloadInstructions />
+          </Section>
+          <Section title="Debug">
+            <DebugInstructions />
+          </Section>
+          <Section title="Learn More">
+            Read the docs to discover what to do next:
+          </Section>
+          <LearnMoreLinks />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+/* 代码中只会被创建一次 */
+const styles = StyleSheet.create({
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+  },
+  highlight: {
+    fontWeight: '700',
+  },
+});
+
 
 /*******************************************************
   导出组件
