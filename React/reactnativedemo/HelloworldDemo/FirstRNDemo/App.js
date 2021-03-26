@@ -18,8 +18,10 @@ import {
   Image,
   useColorScheme,
   TouchableOpacity,
+  TouchableHighlight,
   View,
   FlatList,
+  Modal,
   NativeModules,
   NativeEventEmitter,
 } from 'react-native';
@@ -42,8 +44,9 @@ class HelloWorld extends React.Component {
       // <TouchBox></TouchBox>
       //<FlexBox></FlexBox>
       //<ImageBox></ImageBox>
-      <ListView></ListView>
+      // <ListView></ListView>
       // <NativeConnectBox></NativeConnectBox>
+      <ModalBox/>
     )
   }
 }
@@ -80,6 +83,112 @@ class FlexBox extends React.Component {
     });
   }
 }
+
+/*******************************************************
+  modal 相关
+*******************************************************/
+class ModalBox extends React.Component {
+  state = {
+    modalVisible: false
+  };
+
+  setModalVisible = (visible) => {
+    this.setState({ modalVisible: visible });
+  }
+
+  render() {
+    const { modalVisible } = this.state;
+    return (
+      <View style={modalStyles.centeredView}>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            this.setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={modalStyles.modalBackgroundView}>
+            <View style={modalStyles.modalView}>
+              <Text style={modalStyles.modalText}>《虫师》简介</Text>
+              <Text style={{marginBottom: 30}}>“虫”既不是动物，也不是微生物，而是一种自然界中无处不在的力量，拥有独特的生命形态，偶尔和人类生命产生交汇，便生出一些奇妙的故事。</Text>
+
+              <TouchableHighlight
+                style={{ ...modalStyles.openButton, backgroundColor: "#2196F3", paddingHorizontal: 60 }}
+                onPress={() => {
+                  this.setModalVisible(!modalVisible);
+                }}
+              >
+                <Text style={modalStyles.textStyle}>确定</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+
+        <TouchableHighlight
+          style={modalStyles.openButton}
+          onPress={() => {
+            this.setModalVisible(true);
+          }}
+        >
+          <Text style={modalStyles.textStyle}>Show Modal</Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+}
+
+const modalStyles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+
+  modalBackgroundView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: 'rgba(178,178,178,0.5)'
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: '80%'
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontSize: 24
+  },
+
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+
+});
+
 /*******************************************************
   功能：1、将values数组里面的值，渲染为可点击Text（相当于button）；同时点击的时候，改变flexDirection的值，改变布局方向。
        2、this.props.children 表示父组件里面的所有子组件
