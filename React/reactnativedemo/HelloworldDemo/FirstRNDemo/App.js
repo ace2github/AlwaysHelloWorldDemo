@@ -35,6 +35,14 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 
+// ReactNavigation
+// import {NavigationContainer} from '@react-navigation/native'
+// import {createStackNavigator} from '@react-navigation/stack';
+// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+
 /*******************************************************
   HelloWorld
 *******************************************************/
@@ -50,6 +58,150 @@ class HelloWorld extends React.Component {
     )
   }
 }
+
+/*******************************************************
+  ReactNative-Navigation
+*******************************************************/
+class LoginScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render () {
+    return (
+      <View style={navigatorStyles.screen}>
+        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Home')}}>
+          <Text>跳转首页</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+class HomeScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render () {
+    return(
+      <View style={navigatorStyles.screen}>
+        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Login')}}>
+          <Text>跳转登录</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+class SettingScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render () {
+    return(
+      <View style={navigatorStyles.screen}>
+        <TouchableOpacity>
+          <Text>设置页面</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
+
+/*
+ Stacker
+*/
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Login: LoginScreen,
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions : {
+          headerStyle: {
+              backgroundColor: "white"
+          },
+          headerTintColor: "darkorange",
+          headerTitleStyle: {
+              fontSize: 30
+          },
+      }
+  }
+);
+const AppStackContainer = createAppContainer(AppNavigator);
+
+
+/*
+ Tabber
+*/
+const TabNavigator = createBottomTabNavigator(
+  {
+    Home: HomeScreen,
+    Setting: SettingScreen,
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    },
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'Home') {
+          iconName = focused ? 'message_normal' : 'message_selected';
+        } else if (routeName === 'Setting') {
+          iconName = focused ? 'mine_normal' : 'mine_selected';
+        }
+
+        // You can return any component that you like here!
+        return (<Image source={iconName} style={{width: 40, height: 40}}></Image>);
+      },
+    }),
+  }
+);
+const AppTabContainer = createAppContainer(TabNavigator);
+
+
+const navigatorStyles = StyleSheet.create({
+    screen: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+});
+
+// const stacker = createStackNavigator();
+// class AppStackContainer extends React.Component {
+//   render() {
+//     return(
+//       <NavigationContainer>
+//         <stacker.Navigator>
+//           <stacker.Screen name="Login" component={LoginScreen} />
+//           <stacker.Screen name="Home" component={HomeScreen} />
+//         </stacker.Navigator>
+//       </NavigationContainer>
+//     );
+//   }
+// }
+//
+//
+// const tabbar = createBottomTabNavigator();
+// class AppTabContainer extends React.Component {
+//   render() {
+//     return (
+//       <NavigationContainer>
+//         <tabbar.Navigator>
+//           <tabbar.Screen name="Login" component={LoginScreen} />
+//           <tabbar.Screen name="Home" component={HomeScreen} />
+//         </tabbar.Navigator>
+//       </NavigationContainer>
+//     );
+//   }
+// }
 
 /*******************************************************
   flex布局相关
@@ -650,4 +802,4 @@ const styles = StyleSheet.create({
 /*******************************************************
   导出组件
 *******************************************************/
-export {HelloWorld};
+export {HelloWorld, AppStackContainer, AppTabContainer};
