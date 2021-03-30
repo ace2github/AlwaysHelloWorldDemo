@@ -24,6 +24,7 @@ import {
   Modal,
   NativeModules,
   NativeEventEmitter,
+  Button,
 } from 'react-native';
 
 import {
@@ -39,9 +40,12 @@ import {
 // import {NavigationContainer} from '@react-navigation/native'
 // import {createStackNavigator} from '@react-navigation/stack';
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+/* ReactNavigation 4.x */
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+/* end */
 
 /*******************************************************
   HelloWorld
@@ -69,9 +73,8 @@ class LoginScreen extends React.Component {
   render () {
     return (
       <View style={navigatorStyles.screen}>
-        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Home')}}>
-          <Text>跳转首页</Text>
-        </TouchableOpacity>
+        <Button title='跳转首页' onPress={()=>{this.props.navigation.navigate('Home')}}>
+        </Button>
       </View>
     );
   }
@@ -85,8 +88,8 @@ class HomeScreen extends React.Component {
   render () {
     return(
       <View style={navigatorStyles.screen}>
-        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Login')}}>
-          <Text>跳转登录</Text>
+        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Details')}}>
+          <Text>跳转Details</Text>
         </TouchableOpacity>
       </View>
     );
@@ -108,6 +111,30 @@ class SettingScreen extends React.Component {
     );
   }
 }
+
+
+class DetailsScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render () {
+    return(
+      <View style={navigatorStyles.screen}>
+        <Text>设置页面</Text>
+      </View>
+    );
+  }
+}
+
+
+const navigatorStyles = StyleSheet.create({
+    screen: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+});
 
 
 /*
@@ -137,10 +164,19 @@ const AppStackContainer = createAppContainer(AppNavigator);
 /*
  Tabber
 */
-const TabNavigator = createBottomTabNavigator(
-  {
-    Home: HomeScreen,
-    Setting: SettingScreen,
+const TabNavigator = createBottomTabNavigator({
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: ({ navigation }) => ({
+        title: '首页',
+      }),
+    },
+    Setting: {
+      screen: SettingScreen,
+      navigationOptions: ({ navigation }) => ({
+        title: '设置',
+      }),
+    },
   },
   {
     tabBarOptions: {
@@ -152,56 +188,60 @@ const TabNavigator = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Home') {
-          iconName = focused ? 'message_normal' : 'message_selected';
+          iconName = !focused ? require('./resources/message_normal.png') : require('./resources/message_selected.png');
         } else if (routeName === 'Setting') {
-          iconName = focused ? 'mine_normal' : 'mine_selected';
+          iconName = !focused ? require('./resources/mine_normal.png') : require('./resources/mine_selected.png');
         }
 
         // You can return any component that you like here!
-        return (<Image source={iconName} style={{width: 40, height: 40}}></Image>);
+        return (<Image source={iconName} style={{width: 25, height: 25}}></Image>);
       },
     }),
-  }
-);
+});
 const AppTabContainer = createAppContainer(TabNavigator);
 
 
-const navigatorStyles = StyleSheet.create({
-    screen: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
+/*
+ Stacker + Tabber
+*/
+const HomeStack = createStackNavigator({
+  Home: HomeScreen,
+  Details: DetailsScreen,
+});
+HomeStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  // 定义push的时候隐藏底部tabbar
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
+
+const SettingsStack = createStackNavigator({
+  Settings: SettingScreen,
+  Details: DetailsScreen,
+});
+SettingsStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
+
+const ComplexTabNavigator = createBottomTabNavigator({
+  Home: HomeStack,
+  Settings: SettingsStack,
 });
 
-// const stacker = createStackNavigator();
-// class AppStackContainer extends React.Component {
-//   render() {
-//     return(
-//       <NavigationContainer>
-//         <stacker.Navigator>
-//           <stacker.Screen name="Login" component={LoginScreen} />
-//           <stacker.Screen name="Home" component={HomeScreen} />
-//         </stacker.Navigator>
-//       </NavigationContainer>
-//     );
-//   }
-// }
-//
-//
-// const tabbar = createBottomTabNavigator();
-// class AppTabContainer extends React.Component {
-//   render() {
-//     return (
-//       <NavigationContainer>
-//         <tabbar.Navigator>
-//           <tabbar.Screen name="Login" component={LoginScreen} />
-//           <tabbar.Screen name="Home" component={HomeScreen} />
-//         </tabbar.Navigator>
-//       </NavigationContainer>
-//     );
-//   }
-// }
+const ComplexAppTabContainer = createAppContainer(ComplexTabNavigator);
+
 
 /*******************************************************
   flex布局相关
@@ -802,4 +842,4 @@ const styles = StyleSheet.create({
 /*******************************************************
   导出组件
 *******************************************************/
-export {HelloWorld, AppStackContainer, AppTabContainer};
+export {HelloWorld, AppStackContainer, AppTabContainer, ComplexAppTabContainer};
