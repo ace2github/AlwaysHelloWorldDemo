@@ -47,6 +47,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 /* end */
 
+import SZYCustomView from './SZYCustomView.js';
+
 /*******************************************************
   HelloWorld
 *******************************************************/
@@ -57,8 +59,30 @@ class HelloWorld extends React.Component {
       //<FlexBox></FlexBox>
       //<ImageBox></ImageBox>
       // <ListView></ListView>
-      // <NativeConnectBox></NativeConnectBox>
-      <ModalBox/>
+      <NativeConnectBox></NativeConnectBox>
+      // <ModalBox/>
+      // <CustomNativeView style={{ flex: 1}}/>
+    )
+  }
+}
+
+class BasePage extends React.Component {
+  render() {
+    return (
+      <SafeAreaView></SafeAreaView>
+    )
+  }
+}
+
+class CustomNativeView extends React.Component {
+  clickAction(event) {
+    // Do stuff with event.region.latitude, etc.
+    console.log(event);
+  }
+
+  render() {
+    return (
+      <SZYCustomView style={{ flex: 1}} touchEnabled={false} onClickHandler={this.clickAction}/>
     )
   }
 }
@@ -472,16 +496,30 @@ class NativeConnectBox extends React.Component {
   }
 
   clickHandler() {
-    NativeConnector.callNativeFunc('nihao native, i`m react native.');
+    var dic = {"action": "jump", "data":"url"};
+    NativeConnector.callNative('ztg.jumpTo', JSON.stringify(dic));
   }
 
   clickCallBackHandler() {
-    NativeConnector.callNativeWithCallBackFunc('nihao native, i`m react native.', (data) => {
+    var dic = {"action": "jump", "data":"url"};
+    NativeConnector.callNativeCallback('ztg.jumpTo', 123, (data) => {
       alert(data);
     })
   }
 
+  method_mapper = {
+    "EventInit": (d) => {
+      console.log('et:');
+      console.log(d);
+    }
+  }
+
   componentDidMount() {
+      callJSFunc = NativeConnectorEmitter.addListener('callJSFunc', (info) => {
+          console.log(info);
+          this.method_mapper[info.method](info.data);
+      });
+
       eventInitSubscription = NativeConnectorEmitter.addListener('EventInit', (name) => {
           alert('EventInit ' + name);
 
@@ -754,89 +792,89 @@ const listViewStyles = StyleSheet.create({
 /*******************************************************
   Default
 *******************************************************/
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+// const Section = ({children, title}): Node => {
+//   const isDarkMode = useColorScheme() === 'dark';
+//   return (
+//     <View style={styles.sectionContainer}>
+//       <Text
+//         style={[
+//           styles.sectionTitle,
+//           {
+//             color: isDarkMode ? Colors.white : Colors.black,
+//           },
+//         ]}>
+//         {title}
+//       </Text>
+//       <Text
+//         style={[
+//           styles.sectionDescription,
+//           {
+//             color: isDarkMode ? Colors.light : Colors.dark,
+//           },
+//         ]}>
+//         {children}
+//       </Text>
+//     </View>
+//   );
+// };
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+// const App: () => Node = () => {
+//   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+//   const backgroundStyle = {
+//     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+//   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+//   return (
+//     <SafeAreaView style={backgroundStyle}>
+//       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+//       <ScrollView
+//         contentInsetAdjustmentBehavior="automatic"
+//         style={backgroundStyle}>
+//         <Header />
+//         <View
+//           style={{
+//             backgroundColor: isDarkMode ? Colors.black : Colors.white,
+//           }}>
+//           <Section title="Step One">
+//             Edit <Text style={styles.highlight}>App.js</Text> to change this
+//             screen and then come back to see your edits.
+//           </Section>
+//           <Section title="See Your Changes">
+//             <ReloadInstructions />
+//           </Section>
+//           <Section title="Debug">
+//             <DebugInstructions />
+//           </Section>
+//           <Section title="Learn More">
+//             Read the docs to discover what to do next:
+//           </Section>
+//           <LearnMoreLinks />
+//         </View>
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// };
 
-/* 代码中只会被创建一次 */
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+// /* 代码中只会被创建一次 */
+// const styles = StyleSheet.create({
+//   sectionContainer: {
+//     marginTop: 32,
+//     paddingHorizontal: 24,
+//   },
+//   sectionTitle: {
+//     fontSize: 24,
+//     fontWeight: '600',
+//   },
+//   sectionDescription: {
+//     marginTop: 8,
+//     fontSize: 18,
+//     fontWeight: '400',
+//   },
+//   highlight: {
+//     fontWeight: '700',
+//   },
+// });
 
 
 /*******************************************************

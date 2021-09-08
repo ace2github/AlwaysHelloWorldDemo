@@ -11,11 +11,16 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1CB7C15F265F73B500BF1E4E /* RNSZYCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7C15E265F73B500BF1E4E /* RNSZYCustomView.m */; };
+		1CB7C164265F745D00BF1E4E /* RNSZYCustomViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7C163265F745D00BF1E4E /* RNSZYCustomViewManager.m */; };
 		1CDD7E4E2608733D00936542 /* RNConnectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD7E4D2608733D00936542 /* RNConnectManager.m */; };
 		1CDD7E54260AC69F00936542 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD7E53260AC69F00936542 /* MainViewController.m */; };
 		1CDD7E59260B262300936542 /* LocalLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD7E58260B262300936542 /* LocalLoadViewController.m */; };
 		1CDD7E65260B327100936542 /* index.ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD7E61260B327100936542 /* index.ios.bundle */; };
 		1CDD7E6B260B36B200936542 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 1CDD7E6A260B36B200936542 /* assets */; };
+		1CFC077126534E0E0043331D /* RNBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC076B26534E0E0043331D /* RNBridge.m */; };
+		1CFC077326534E0E0043331D /* RNBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC077026534E0E0043331D /* RNBUtil.m */; };
+		1CFC077A265354B10043331D /* ZTGJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFC0779265354B10043331D /* ZTGJavascriptBridge.m */; };
 		305E6900DEF93DBA5EC0F35E /* libPods-FirstRNDemo-FirstRNDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3A41A444FD33DC4E1A3B4D /* libPods-FirstRNDemo-FirstRNDemoTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D751199266074B3453E259E5 /* libPods-FirstRNDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD6D9BFE4790417A4D935D25 /* libPods-FirstRNDemo.a */; };
@@ -41,6 +46,10 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FirstRNDemo/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FirstRNDemo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FirstRNDemo/main.m; sourceTree = "<group>"; };
+		1CB7C15D265F73B500BF1E4E /* RNSZYCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNSZYCustomView.h; sourceTree = "<group>"; };
+		1CB7C15E265F73B500BF1E4E /* RNSZYCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNSZYCustomView.m; sourceTree = "<group>"; };
+		1CB7C162265F745D00BF1E4E /* RNSZYCustomViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNSZYCustomViewManager.h; sourceTree = "<group>"; };
+		1CB7C163265F745D00BF1E4E /* RNSZYCustomViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNSZYCustomViewManager.m; sourceTree = "<group>"; };
 		1CDD7E4C2608733D00936542 /* RNConnectManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNConnectManager.h; sourceTree = "<group>"; };
 		1CDD7E4D2608733D00936542 /* RNConnectManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNConnectManager.m; sourceTree = "<group>"; };
 		1CDD7E52260AC69F00936542 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -49,6 +58,12 @@
 		1CDD7E58260B262300936542 /* LocalLoadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalLoadViewController.m; sourceTree = "<group>"; };
 		1CDD7E61260B327100936542 /* index.ios.bundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = index.ios.bundle; sourceTree = "<group>"; };
 		1CDD7E6A260B36B200936542 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		1CFC076B26534E0E0043331D /* RNBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBridge.m; sourceTree = "<group>"; };
+		1CFC076D26534E0E0043331D /* RNBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNBUtil.h; sourceTree = "<group>"; };
+		1CFC076E26534E0E0043331D /* RNBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNBridge.h; sourceTree = "<group>"; };
+		1CFC077026534E0E0043331D /* RNBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBUtil.m; sourceTree = "<group>"; };
+		1CFC0778265354B10043331D /* ZTGJavascriptBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTGJavascriptBridge.h; sourceTree = "<group>"; };
+		1CFC0779265354B10043331D /* ZTGJavascriptBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZTGJavascriptBridge.m; sourceTree = "<group>"; };
 		73547E9B153CA6C8EC7F87E2 /* Pods-FirstRNDemo-FirstRNDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstRNDemo-FirstRNDemoTests.release.xcconfig"; path = "Target Support Files/Pods-FirstRNDemo-FirstRNDemoTests/Pods-FirstRNDemo-FirstRNDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = FirstRNDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87999CF2D63DF69BF2C3AEE2 /* Pods-FirstRNDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstRNDemo.release.xcconfig"; path = "Target Support Files/Pods-FirstRNDemo/Pods-FirstRNDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,8 +125,15 @@
 		13B07FAE1A68108700A75B9A /* FirstRNDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1CFC076A26534E0E0043331D /* RNBridge */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				1CB7C15D265F73B500BF1E4E /* RNSZYCustomView.h */,
+				1CB7C15E265F73B500BF1E4E /* RNSZYCustomView.m */,
+				1CB7C162265F745D00BF1E4E /* RNSZYCustomViewManager.h */,
+				1CB7C163265F745D00BF1E4E /* RNSZYCustomViewManager.m */,
+				1CFC0778265354B10043331D /* ZTGJavascriptBridge.h */,
+				1CFC0779265354B10043331D /* ZTGJavascriptBridge.m */,
 				1CDD7E52260AC69F00936542 /* MainViewController.h */,
 				1CDD7E53260AC69F00936542 /* MainViewController.m */,
 				1CDD7E57260B262300936542 /* LocalLoadViewController.h */,
@@ -124,6 +146,17 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = FirstRNDemo;
+			sourceTree = "<group>";
+		};
+		1CFC076A26534E0E0043331D /* RNBridge */ = {
+			isa = PBXGroup;
+			children = (
+				1CFC076E26534E0E0043331D /* RNBridge.h */,
+				1CFC076B26534E0E0043331D /* RNBridge.m */,
+				1CFC076D26534E0E0043331D /* RNBUtil.h */,
+				1CFC077026534E0E0043331D /* RNBUtil.m */,
+			);
+			path = RNBridge;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -433,11 +466,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CB7C164265F745D00BF1E4E /* RNSZYCustomViewManager.m in Sources */,
+				1CB7C15F265F73B500BF1E4E /* RNSZYCustomView.m in Sources */,
+				1CFC077126534E0E0043331D /* RNBridge.m in Sources */,
 				1CDD7E4E2608733D00936542 /* RNConnectManager.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				1CFC077326534E0E0043331D /* RNBUtil.m in Sources */,
 				1CDD7E59260B262300936542 /* LocalLoadViewController.m in Sources */,
 				1CDD7E54260AC69F00936542 /* MainViewController.m in Sources */,
+				1CFC077A265354B10043331D /* ZTGJavascriptBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
