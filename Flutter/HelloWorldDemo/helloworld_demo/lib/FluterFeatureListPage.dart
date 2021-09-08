@@ -4,6 +4,8 @@ import 'TextDemo.dart';
 import 'ImageDemo.dart';
 import 'ToolWidget.dart';
 import 'ButtonDart.dart';
+import 'LayoutDemoPage.dart';
+import 'LayoutDemoPage_2.dart';
 
 ///
 /// Flutter的组件功能学习列表
@@ -44,6 +46,18 @@ class _FeatureListView extends StatelessWidget {
         return new ButtonWidget();
       }));
     }),
+
+    CellItem('Layout', (context){
+      Navigator.push(context, MaterialPageRoute(builder: (context){
+        return new LayoutDemoPage();
+      }));
+    }),
+
+    CellItem('Layout 2', (context){
+      Navigator.push(context, MaterialPageRoute(builder: (context){
+        return new LayoutDemoPage_2();
+      }));
+    }),
   ];
 
   @override
@@ -60,14 +74,18 @@ class _FeatureListView extends StatelessWidget {
   Widget createCell(CellItem item, BuildContext context) {
     return TextButton(
         onPressed: () {
-          // if (null != item.clickActionHandler) {
-          //   item.clickActionHandler!(context);
-          // }
-          item.clickActionHandler!(context);
+          if (null != item.clickActionHandler) {
+            item.clickActionHandler!(context);
+          }
 
           print(item.title);
         },
-        child: Text(item.title));
+        child: Text(
+          item.title, 
+          textAlign: TextAlign.start, 
+          style: TextStyle(fontSize: 20.0,),
+        )
+    );
   }
 }
 
@@ -77,6 +95,7 @@ class _FeatureListView extends StatelessWidget {
  * CellItem对应的的结构体
  */
 
+// 重命名：函数类型
 typedef ClickAction = void Function(BuildContext context);
 
 class CellItem extends Object {
