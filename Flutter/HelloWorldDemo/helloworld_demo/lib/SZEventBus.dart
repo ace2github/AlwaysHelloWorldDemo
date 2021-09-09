@@ -44,34 +44,31 @@ class SZEventBus {
   }
 }
 
-// void test() {
-//   SZEventBus ebus = SZEventBus();
-//   ebus.register('gogo', (info) { 
-//     print('gogo:${info}');
-//   });
+void test() {
+  SZEventBus ebus = SZEventBus();
+  ebus.register('gogo', (info) { 
+    print('gogo:${info}');
+  });
 
-//   ebus.register('gogo', (info) { 
-//     print('gogo:${info}');
-//   });
+  ebus.register('gogo', (info) { 
+    print('gogo:${info}');
+  });
 
-//   ebus.register('123', (info) { 
-//     print('123:${info}');
-//   });
+  ebus.register('123', (info) { 
+    print('123:${info}');
+  });
 
-//   ebus.register('5', (info) { 
-//     print('5:${info}');
-//   });
+  ebus.register('5', (info) { 
+    print('5:${info}');
+  });
 
-//   ebus.emit('gogo', '请接收消息了');
-//   ebus.emit('123', '请接收消息了');
-//   ebus.emit('5', '请接收消息了');
+  ebus.emit('gogo', '请接收消息了');
+  ebus.emit('123', '请接收消息了');
+  ebus.emit('5', '请接收消息了');
 
-//   ebus.unreister('5', null);
+  ebus.unreister('5', null);
 
-//   ebus.emit('gogo', ['请接收消息了', 'message']);
-//   ebus.emit('123', '请接收消息了');
-//   ebus.emit('5', '请接收消息了');
-// }
-// void main(List<String> args) {
-//   test();
-// }
+  ebus.emit('gogo', ['请接收消息了', 'message']);
+  ebus.emit('123', '请接收消息了');
+  ebus.emit('5', '请接收消息了');
+}
