@@ -87,6 +87,8 @@ class ButtonWidget extends StatelessWidget {
               onPressed: (){},
               child: Text('OutlinedButton'),
             ),
+
+            FloatingActionButton(onPressed: (){}, child: Text('+'),)
           ],
         ),
       ),

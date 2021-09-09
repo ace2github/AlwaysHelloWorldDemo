@@ -139,7 +139,19 @@ class _ProgressIndicatorWidgetState extends State<ProgressIndicatorWidget> {
         CircularProgressIndicator(
           backgroundColor: Colors.grey,
           valueColor: AlwaysStoppedAnimation(Colors.blue),
-        ), 
+        ),
+
+        Container(padding: EdgeInsets.only(top: 10), child:Text('可以自定义宽高的圆形进度loading')), 
+        UnconstrainedBox(
+          child: SizedBox(
+            width:60,
+            height: 60,
+            child: CircularProgressIndicator(
+              strokeWidth: 3.0,
+              valueColor: AlwaysStoppedAnimation(Colors.lightBlue), // 设置不停止的动画
+            ),
+          ),
+        ) 
       ],
     );
   }
