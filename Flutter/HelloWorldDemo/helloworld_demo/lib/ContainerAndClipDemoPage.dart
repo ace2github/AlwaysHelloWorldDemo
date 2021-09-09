@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-class ClipDemoPage extends StatelessWidget {
-  const ClipDemoPage({ Key? key }) : super(key: key);
+class ContainerAndClipDemoPage extends StatelessWidget {
+  const ContainerAndClipDemoPage({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Clip Widget'),),
+      appBar: AppBar(title: Text('Container and Clip Widget'),),
       body: Column(
         children: [
           ClipDemoWidget(),

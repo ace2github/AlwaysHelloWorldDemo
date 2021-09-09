@@ -6,7 +6,7 @@ import 'ToolWidget.dart';
 import 'ButtonDart.dart';
 import 'LayoutDemoPage.dart';
 import 'LayoutDemoPage_2.dart';
-import 'ClipDemoPage.dart';
+import 'ContainerAndClipDemoPage.dart';
 
 ///
 /// Flutter的组件功能学习列表
@@ -62,7 +62,7 @@ class _FeatureListView extends StatelessWidget {
 
     CellItem('Container & Clip', (context){
       Navigator.push(context, MaterialPageRoute(builder: (context){
-        return new ClipDemoPage(); 
+        return new ContainerAndClipDemoPage(); 
       }));
     }),
   ];
