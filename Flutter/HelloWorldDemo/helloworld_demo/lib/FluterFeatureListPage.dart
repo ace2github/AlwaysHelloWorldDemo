@@ -7,6 +7,9 @@ import 'ButtonDart.dart';
 import 'LayoutDemoPage.dart';
 import 'LayoutDemoPage_2.dart';
 import 'ContainerAndClipDemoPage.dart';
+import 'CustomScrollViewPage.dart';
+import 'GridViewPage.dart';
+import 'WaterflowGridViewPage.dart';
 
 ///
 /// Flutter的组件功能学习列表
@@ -65,6 +68,24 @@ class _FeatureListView extends StatelessWidget {
         return new ContainerAndClipDemoPage(); 
       }));
     }),
+
+    CellItem('Custom Scroll', (context){
+      Navigator.push(context, MaterialPageRoute(builder: (context){
+        return new CustomScrollViewPage();
+      }));
+    }),
+    
+    CellItem('Grid view', (context){
+      Navigator.push(context, MaterialPageRoute(builder: (context){
+        return new GridViewpage();
+      }));
+    }),
+
+    CellItem('Water Flow Grid View', (context){
+      Navigator.push(context, MaterialPageRoute(builder: (context){
+        return new WaterFlowGridPage();
+      }));
+    })
   ];
 
   @override
