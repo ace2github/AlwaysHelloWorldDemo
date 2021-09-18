@@ -1,0 +1,1 @@
+<view class="content"><block wx:for="{{list}}" wx:for-item="title" wx:for-index="index"><view class="cell-item"><text>{{title}}</text></view></block></view>
