@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 
 /// 使用第三方组件：flutter_staggered_grid_view
 /// https://pub.dev/packages/flutter_staggered_grid_view/example
+/// 使用插件flutter_staggered_grid_view实现分页瀑布流效果 https://www.keppel.fun/articles/2019/04/26/1556245200876.html
+/// flutter_staggered_grid_view和瀑布流效果 https://juejin.cn/post/6844904168847573006
+/// flutter_staggered_grid_view和瀑布流效果 https://juejin.cn/post/6844903949317718030
+/// https://zhuanlan.zhihu.com/p/160869337
 ///
 class WaterFlowGridPage extends StatelessWidget {
   const WaterFlowGridPage({ Key? key }) : super(key: key);
