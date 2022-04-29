@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/planlist",
+    "pages/index/imagearticle"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "厦门划片",
+    "navigationBarBackgroundColor": "#09D0B2",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

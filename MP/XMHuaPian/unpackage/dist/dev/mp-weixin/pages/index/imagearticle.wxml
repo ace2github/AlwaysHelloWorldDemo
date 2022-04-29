@@ -1,0 +1,1 @@
+<view class="content-view data-v-0553fcde"><view wx:for="{{a}}" wx:for-item="img" class="article-list-view data-v-0553fcde" bindtap="{{img.b}}"><image class="img data-v-0553fcde" src="{{img.a}}" mode="widthFix" fade-show="true"></image></view></view>
