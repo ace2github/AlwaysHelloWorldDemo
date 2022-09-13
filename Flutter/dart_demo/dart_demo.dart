@@ -7,14 +7,11 @@ import 'ClassDemo.dart';
 
 void sayHello(String name) => print('$name say hello!');
 
-void testMapTypeDemo() {
-
-}
-
+void testMapTypeDemo() {}
 
 void main(List<String> args) {
-  testMapTypeDemo();
-  // testListTypeDemo();
+  // testMapTypeDemo();
+  testListTypeDemo();
 
   // sayHello('Tom'); // Tom say hello!
 
@@ -29,8 +26,6 @@ void main(List<String> args) {
   // // Error: Can't assign to the final variable 'name'.
   // const String name = 'hello';
   // name = 'new hello';
-
-
 
   // // Error: Can't assign to the const variable 'list'.
   // const list = [1, 2, 3];
@@ -47,7 +42,7 @@ void main(List<String> args) {
   // list[0] = 10;
   // print(list);
 
-  // // number类型  
+  // // number类型
   // num val = 1;
   // print(val); // 1
 
@@ -67,7 +62,6 @@ void main(List<String> args) {
   //   'iodine',
   //   'astatine',
   // };
-  
 
   // var name;
   // print(name);
@@ -84,7 +78,7 @@ void main(List<String> args) {
   // var list = [1, 2, 3];
   // printArray(list);
   // sayHelloworld('cch');
-  
+
   // class_demo_test();
 
   // testFunctionHandler();
@@ -113,10 +107,14 @@ void main(List<String> args) {
   // var listOfInts = [1, 2, 3];
   // var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
   // print(listOfStrings); // [#0, #1, #2, #3]
-  
 }
 
 void testListTypeDemo() {
+  var array = const [1, 2, 3];
+  array = [12, 13];
+  array[0] = 10;
+  print(array[0]);
+
   var fruits = [];
   print('isEmpty:${fruits.isEmpty}');
 
@@ -146,6 +144,6 @@ void testListTypeDemo() {
 
   var numbers = [1, 2, 3, 4, 5, 6, 7, 8];
   print('原数组：$numbers');
-  numbers.sort((a, b) => a>b?a:b);
+  numbers.sort((a, b) => a > b ? a : b);
   print('倒叙：$numbers');
 }
