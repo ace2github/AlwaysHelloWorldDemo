@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'FirstPage.dart';
 import 'FluterFeatureListPage.dart';
+import 'states/ProviderDemo.dart';
 
 void main() {
-  runApp(MyApp());
+  // runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    child: MyApp(),
+    create: (context) => CustormProvider(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +34,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 ///
 /// 默认的初始化控制器

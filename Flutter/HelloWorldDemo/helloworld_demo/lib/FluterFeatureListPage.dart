@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import '3_listview/ListViewNotificationPage.dart';
+import '3_listview/ListViewPage.dart';
+import 'EventsPage.dart';
 import 'TextDemo.dart';
 import 'ImageDemo.dart';
 import 'ToolWidget.dart';
@@ -10,6 +12,8 @@ import 'ContainerAndClipDemoPage.dart';
 import 'CustomScrollViewPage.dart';
 import 'GridViewPage.dart';
 import 'WaterflowGridViewPage.dart';
+import 'animation/AnimationDemoPage.dart';
+import 'states/InheritWidgetPage.dart';
 
 ///
 /// Flutter的组件功能学习列表
@@ -26,64 +30,88 @@ class FluterFeatureListPage extends StatelessWidget {
 
 class _FeatureListView extends StatelessWidget {
   var dataList = <CellItem>[
-    CellItem('Text', (context) => {
-      // 页面的push和页面路由
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return new TextDemo();
-      }))
-    }),
-
+    CellItem(
+        'Text',
+        (context) => {
+              // 页面的push和页面路由
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return new TextDemo();
+              }))
+            }),
     CellItem('Image', (context) {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new ImageDemo();
       }));
     }),
-
     CellItem('Tools', (context) {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new ToolWidget();
       }));
     }),
-
-    CellItem('Buttons', (context) { 
-      Navigator.push(context, MaterialPageRoute(builder: (context){
+    CellItem('Buttons', (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new ButtonWidget();
       }));
     }),
-
-    CellItem('Layout', (context){
-      Navigator.push(context, MaterialPageRoute(builder: (context){
+    CellItem('Layout', (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new LayoutDemoPage();
       }));
     }),
-
-    CellItem('Layout 2', (context){
-      Navigator.push(context, MaterialPageRoute(builder: (context){
+    CellItem('Layout 2', (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new LayoutDemoPage_2();
       }));
     }),
-
-    CellItem('Container & Clip', (context){
-      Navigator.push(context, MaterialPageRoute(builder: (context){
-        return new ContainerAndClipDemoPage(); 
+    CellItem('Container & Clip', (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return new ContainerAndClipDemoPage();
       }));
     }),
-
-    CellItem('Custom Scroll', (context){
-      Navigator.push(context, MaterialPageRoute(builder: (context){
+    CellItem('CustomScrollView&Slivers', (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new CustomScrollViewPage();
       }));
     }),
-    
-    CellItem('Grid view', (context){
-      Navigator.push(context, MaterialPageRoute(builder: (context){
+    CellItem("ListView", (context) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return MyListViewWidget();
+      }));
+    }),
+    CellItem("ListView-notification listener", (context) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return ListViewNotificationPage();
+      }));
+    }),
+    CellItem('Grid view', (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
         return new GridViewpage();
       }));
     }),
+    // CellItem('Water Flow Grid View', (context) {
+    //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+    //     return new WaterFlowGridPage();
+    //   }));
+    // }),
+    CellItem("AppState", (context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return new AppStatePage();
+      }));
+    }),
 
-    CellItem('Water Flow Grid View', (context){
-      Navigator.push(context, MaterialPageRoute(builder: (context){
-        return new WaterFlowGridPage();
+    CellItem("Event", (context) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return MyEventWidget();
+      }));
+
+      // Navigator.push(context, MaterialPageRoute(builder: (context) {
+      //   return MyEventWidget();
+      // }));
+    }),
+
+    CellItem("Animation", (context) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+        return MyAnimationWidget();
       }));
     })
   ];
@@ -109,15 +137,14 @@ class _FeatureListView extends StatelessWidget {
           print(item.title);
         },
         child: Text(
-          item.title, 
-          textAlign: TextAlign.start, 
-          style: TextStyle(fontSize: 20.0,),
-        )
-    );
+          item.title,
+          textAlign: TextAlign.start,
+          style: TextStyle(
+            fontSize: 20.0,
+          ),
+        ));
   }
 }
-
-
 
 /*
  * CellItem对应的的结构体

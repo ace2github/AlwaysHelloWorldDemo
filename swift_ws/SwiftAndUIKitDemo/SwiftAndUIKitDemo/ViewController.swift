@@ -33,6 +33,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
+    func findMin<T: Comparable>(_ a: T, _ b: T) -> T {
+        return a > b ? b : a
+    }
+    
     
     let titleLbl:UILabel = UILabel()
     let tableView = UITableView(frame: .zero, style: .plain)
@@ -47,7 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        findMin(10, 1)
         //let db = FMDatabase(path: "");
         
         // Do any additional setup after loading the view.

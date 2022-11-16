@@ -1,5 +1,6 @@
 import 'FunctionDemo.dart';
 import 'ClassDemo.dart';
+import 'demo.dart';
 
 // void sayHello(String name) {
 //   print('$name say hello!');
@@ -10,103 +11,105 @@ void sayHello(String name) => print('$name say hello!');
 void testMapTypeDemo() {}
 
 void main(List<String> args) {
+  runTest();
+  testFunctionHandler();
+  return;
+
   // testMapTypeDemo();
   testListTypeDemo();
 
   // sayHello('Tom'); // Tom say hello!
 
-  // String slogan = 'hello haha';
-  // var dataList = <String>[slogan];
-  // dataList.insert(0, '123456');
-  // print(dataList);
+  String slogan = 'hello haha';
+  var dataList = <String>[slogan];
+  dataList.insert(0, '123456');
+  print(dataList);
 
-  // int? age;
-  // print(age);
+  int? age;
+  print(age);
 
-  // // Error: Can't assign to the final variable 'name'.
-  // const String name = 'hello';
+  // Error: Can't assign to the final variable 'name'.
+  const String name = 'hello';
   // name = 'new hello';
 
-  // // Error: Can't assign to the const variable 'list'.
-  // const list = [1, 2, 3];
+  // Error: Can't assign to the const variable 'list'.
+  const list = [1, 2, 3];
   // list = [11, 12];
 
-  // // Unsupported operation: Cannot modify an unmodifiable list
-  // list[0] = 10;
+  // Unsupported operation: Cannot modify an unmodifiable list
+  list[0] = 10;
   // print(list);
 
-  // var list = const [];
-  // list = [1, 2, 3];
-  // print(list);
+  var list_0 = const [];
+  list_0 = [1, 2, 3];
+  print(list_0);
 
-  // list[0] = 10;
-  // print(list);
+  list[0] = 10;
+  print(list);
 
-  // // number类型
-  // num val = 1;
-  // print(val); // 1
+  // number类型
+  num val = 1;
+  print(val); // 1
 
-  // val += 0.5;
-  // print(val); // 1.5
+  val += 0.5;
+  print(val); // 1.5
 
-  // // 布尔值
-  // bool flag = false;
-  // print(flag);
-  // flag = true;
-  // print(flag);
+  // 布尔值
+  bool flag = false;
+  print(flag);
+  flag = true;
+  print(flag);
 
-  // final constantSet = const {
-  //   'fluorine',
-  //   'chlorine',
-  //   'bromine',
-  //   'iodine',
-  //   'astatine',
-  // };
+  final constantSet = const {
+    'fluorine',
+    'chlorine',
+    'bromine',
+    'iodine',
+    'astatine',
+  };
 
-  // var name;
-  // print(name);
+  var name_1;
+  print(name_1);
 
-  // String nickName;
+  String nickName;
   // print(nickName); // 报错，不可为空变量，使用前必须初始化
 
-  // String? nickName1;
-  // print(nickName1); // 不会报错，null
+  String? nickName1;
+  print(nickName1); // 不会报错，null
 
   // int num = 1;
   // print("%x", num);
 
-  // var list = [1, 2, 3];
-  // printArray(list);
-  // sayHelloworld('cch');
+  var list_1 = [1, 2, 3];
+  printArray(list_1);
+  sayHelloworld('cch');
 
-  // class_demo_test();
+  class_demo_test();
 
-  // testFunctionHandler();
+  var foo = const [];
+  foo = [1, 2, 3];
+  print(foo);
+  foo[0] = 0;
+  print(foo);
 
-  // var foo = const [];
-  // foo = [1, 2, 3];
-  // print(foo);
-  // foo[0] = 0;
-  // print(foo);
+  foo = [2, 3, 4];
+  print(foo);
 
-  // foo = [2, 3, 4];
-  // print(foo);
+  var list_3 = [1, 2, 3];
+  var list_4 = [0, ...list];
+  print(list_4); // [0, 1, 2, 3]
 
-  // var list = [1, 2, 3];
-  // var list2 = [0, ...list];
-  // print(list2); // [0, 1, 2, 3]
+  var null_list;
+  var list3 = [0, ...?null_list];
+  print(list3); // [0]
 
-  // var null_list;
-  // var list3 = [0, ...?null_list];
-  // print(list3); // [0]
+  bool promoActive = true;
+  var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+  print(nav); // [Home, Furniture, Plants, Outlet]
 
-  // bool promoActive = true;
-  // var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
-  // print(nav); // [Home, Furniture, Plants, Outlet]
-
-  // var listOfInts = [1, 2, 3];
-  // var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
-  // print(listOfStrings); // [#0, #1, #2, #3]
+  var listOfInts = [1, 2, 3];
+  var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
+  print(listOfStrings); // [#0, #1, #2, #3]
 }
 
 void testListTypeDemo() {

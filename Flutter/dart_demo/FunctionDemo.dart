@@ -1,3 +1,4 @@
+
 void testFunctionHandler() {
   // const list = ['apples', 'bananas', 'oranges'];
   // list.forEach((item) {
@@ -47,6 +48,10 @@ void testFunctionHandler() {
 
   print(say_1_2('Bob', 'Howdy', 'smoke signal'));
   print(say_1_2('Bob', 'Howdy'));
+}
+
+void test({String? name, int? age}) {
+  print("name=${name}, age=${age}");
 }
 
 Function makeAdder(int addBy, String name) {
