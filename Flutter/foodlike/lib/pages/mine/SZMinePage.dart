@@ -61,7 +61,7 @@ class _MineMainViewState extends State<MineMainView> {
               )
             ]),
             background: Image.asset(
-              "assets/images//banner_bg.png",
+              "assets/images/banner_bg.png",
               fit: BoxFit.cover,
             ),
           ),
