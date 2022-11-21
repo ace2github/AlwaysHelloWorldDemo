@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:helloworld_demo/network/HttpManager.dart';
+import 'package:helloworld_demo/network/NetworkConfig.dart';
+import 'package:helloworld_demo/themes/DeviceInfo.dart';
 
 // class MyListViewWidget extends StatelessWidget {
 //   const MyListViewWidget({Key? key}) : super(key: key);
@@ -218,6 +221,7 @@ class _MyListViewWidgetState extends State<MyListViewWidget> {
   @override
   void initState() {
     // TODO: implement initState
+    // HttpManager.request("https://douban.uieee.com/v2/movie/top250?start=0&count=20", method: HttpMethods.get
     _scrollController = ScrollController();
     _scrollController.addListener(() {
       print(_scrollController.offset);
@@ -247,6 +251,12 @@ class _MyListViewWidgetState extends State<MyListViewWidget> {
       body: ListView.builder(
         itemBuilder: (context, index) {
           return ListTile(
+            leading: Container(
+              width: 60.0.px,
+              height: 60,
+              child: Image.network(
+                  "https://picsum.photos/200/300?random=${index}"),
+            ),
             title: Text("title ${index}"),
             trailing: Icon(Icons.arrow_forward_ios),
           );
