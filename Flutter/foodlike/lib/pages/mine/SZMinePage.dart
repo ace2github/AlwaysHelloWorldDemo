@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:foodlike/pages/mine/SZSettingPage.dart';
 
+import '../alerts/SZAlerts.dart';
+
 class SZMinePage extends StatelessWidget {
   static final String routeName = "/mine";
   const SZMinePage({super.key});
@@ -40,7 +42,7 @@ class _MineMainViewState extends State<MineMainView> {
       "个人资料",
       "订单",
       "评价",
-      "设置",
+      "退出",
     ];
     return CustomScrollView(
       slivers: [
@@ -92,6 +94,12 @@ class _MineMainViewState extends State<MineMainView> {
                   switch (index) {
                     case 0:
                       Navigator.of(context).pushNamed(SZSettingPage.routeName);
+                      break;
+                    case 1:
+                      showBottomSheetView(context);
+                      break;
+                    case 3:
+                      showAlertView(context);
                       break;
                     default:
                   }

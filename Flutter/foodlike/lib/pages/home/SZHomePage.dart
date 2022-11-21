@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:foodlike/model/SZDataManager.dart';
 import 'package:foodlike/model/SZHomeModule.dart';
 import 'package:foodlike/pages/home/SZFoodList.dart';
@@ -90,12 +91,48 @@ class SZMainModuleView extends StatefulWidget {
 //   }
 // }
 class _SZMainModuleViewState extends State<SZMainModuleView> {
+  List<String> _imageUrl = [];
   List<SZHomeModule> _moduleList = [];
 
   @override
   Widget build(BuildContext context) {
+    _imageUrl = [
+      'https://upload-images.jianshu.io/upload_images/5809200-a99419bb94924e6d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
+      'https://upload-images.jianshu.io/upload_images/5809200-736bc3917fe92142.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
+      'https://upload-images.jianshu.io/upload_images/5809200-7fe8c323e533f656.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
+      'https://upload-images.jianshu.io/upload_images/5809200-48dd99da471ffa3f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
+      'https://upload-images.jianshu.io/upload_images/5809200-4de5440a56bff58f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
+    ];
+
     // FutureBuilder 使用会有局限性，每次它都会构建影响性能
     // 也不适用于分页加载的数据
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Container(
+            height: 200,
+            width: double.infinity,
+            child: Swiper(
+              itemCount: _imageUrl.length,
+              autoplay: true,
+              pagination: SwiperPagination(),
+              itemBuilder: (context, index) {
+                return Image.network(
+                  _imageUrl[index],
+                  fit: BoxFit.fill,
+                );
+              },
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: buildModuleList(context),
+        )
+      ],
+    );
+  }
+
+  Widget buildModuleList(BuildContext context) {
     return FutureBuilder<List<SZHomeModule>>(
       future: SZDataManager.loadHomeModule(),
       builder: (context, snapshot) {
@@ -111,6 +148,8 @@ class _SZMainModuleViewState extends State<SZMainModuleView> {
         _moduleList = snapshot.data ?? [];
 
         return GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.all(10.0),
             itemCount: _moduleList.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
