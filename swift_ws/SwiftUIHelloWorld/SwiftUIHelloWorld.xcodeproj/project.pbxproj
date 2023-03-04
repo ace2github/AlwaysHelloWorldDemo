@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		064921843CE26FEAA54A0A76 /* Pods_SwiftUIHelloWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2AAA6755DE7F3779931E1C /* Pods_SwiftUIHelloWorld.framework */; };
+		1C33B55F29373E0F0045B7F4 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C33B55E29373E0F0045B7F4 /* data.json */; };
+		1C33B56129373E2E0045B7F4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C33B56029373E2E0045B7F4 /* DataManager.swift */; };
+		1C33B563293756CB0045B7F4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C33B562293756CB0045B7F4 /* NetworkManager.swift */; };
 		1C63B9F8269FD6EC00ED403A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63B9F7269FD6EC00ED403A /* AppDelegate.swift */; };
 		1C63B9FA269FD6EC00ED403A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63B9F9269FD6EC00ED403A /* SceneDelegate.swift */; };
 		1C63B9FC269FD6EC00ED403A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63B9FB269FD6EC00ED403A /* ContentView.swift */; };
@@ -17,9 +20,19 @@
 		1C63BA11269FE5AB00ED403A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63BA10269FE5AB00ED403A /* MainViewController.swift */; };
 		1C63BA1426A0170900ED403A /* HelloTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63BA1326A0170900ED403A /* HelloTableViewCell.swift */; };
 		1C63BA1726A01BD800ED403A /* CellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63BA1626A01BD800ED403A /* CellDataModel.swift */; };
+		1CF516D12938BB6B003B31C2 /* RXManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF516D02938BB6B003B31C2 /* RXManager.swift */; };
+		1CF516D429399096003B31C2 /* EBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF516D329399096003B31C2 /* EBEvent.swift */; };
+		1CF516D6293990EE003B31C2 /* EasyBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF516D5293990EE003B31C2 /* EasyBus.swift */; };
+		1CF516D82939936B003B31C2 /* EBObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF516D72939936B003B31C2 /* EBObserver.swift */; };
+		1CF516DA2939944D003B31C2 /* EBBusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF516D92939944D003B31C2 /* EBBusManager.swift */; };
+		1CF516DC29399ED3003B31C2 /* EventConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF516DB29399ED3003B31C2 /* EventConfig.swift */; };
+		1CF516DE2939A8C8003B31C2 /* EBBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF516DD2939A8C8003B31C2 /* EBBus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C33B55E29373E0F0045B7F4 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		1C33B56029373E2E0045B7F4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1C33B562293756CB0045B7F4 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1C63B9F4269FD6EC00ED403A /* SwiftUIHelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIHelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C63B9F7269FD6EC00ED403A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C63B9F9269FD6EC00ED403A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +44,13 @@
 		1C63BA10269FE5AB00ED403A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1C63BA1326A0170900ED403A /* HelloTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloTableViewCell.swift; sourceTree = "<group>"; };
 		1C63BA1626A01BD800ED403A /* CellDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDataModel.swift; sourceTree = "<group>"; };
+		1CF516D02938BB6B003B31C2 /* RXManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXManager.swift; sourceTree = "<group>"; };
+		1CF516D329399096003B31C2 /* EBEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBEvent.swift; sourceTree = "<group>"; };
+		1CF516D5293990EE003B31C2 /* EasyBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyBus.swift; sourceTree = "<group>"; };
+		1CF516D72939936B003B31C2 /* EBObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBObserver.swift; sourceTree = "<group>"; };
+		1CF516D92939944D003B31C2 /* EBBusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBBusManager.swift; sourceTree = "<group>"; };
+		1CF516DB29399ED3003B31C2 /* EventConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConfig.swift; sourceTree = "<group>"; };
+		1CF516DD2939A8C8003B31C2 /* EBBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBBus.swift; sourceTree = "<group>"; };
 		3D2AAA6755DE7F3779931E1C /* Pods_SwiftUIHelloWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIHelloWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52394CE19B53D3E69E9EEF21 /* Pods-SwiftUIHelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIHelloWorld.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIHelloWorld/Pods-SwiftUIHelloWorld.release.xcconfig"; sourceTree = "<group>"; };
 		C46DE2D057DA16354667DA05 /* Pods-SwiftUIHelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIHelloWorld.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUIHelloWorld/Pods-SwiftUIHelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
@@ -56,6 +76,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1C33B55D29373DD50045B7F4 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				1CF516D229398C67003B31C2 /* EasyBus */,
+				1C33B55E29373E0F0045B7F4 /* data.json */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		1C63B9EB269FD6EC00ED403A = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +106,17 @@
 		1C63B9F6269FD6EC00ED403A /* SwiftUIHelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				1C33B55D29373DD50045B7F4 /* resources */,
 				1C63B9F7269FD6EC00ED403A /* AppDelegate.swift */,
 				1C63B9F9269FD6EC00ED403A /* SceneDelegate.swift */,
 				1C63B9FB269FD6EC00ED403A /* ContentView.swift */,
 				1C63BA10269FE5AB00ED403A /* MainViewController.swift */,
+				1CF516DB29399ED3003B31C2 /* EventConfig.swift */,
 				1C63BA1326A0170900ED403A /* HelloTableViewCell.swift */,
 				1C63BA1626A01BD800ED403A /* CellDataModel.swift */,
+				1C33B56029373E2E0045B7F4 /* DataManager.swift */,
+				1C33B562293756CB0045B7F4 /* NetworkManager.swift */,
+				1CF516D02938BB6B003B31C2 /* RXManager.swift */,
 				1C63B9FD269FD6EE00ED403A /* Assets.xcassets */,
 				1C63BA02269FD6EE00ED403A /* LaunchScreen.storyboard */,
 				1C63BA05269FD6EE00ED403A /* Info.plist */,
@@ -99,13 +133,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		1CF516D229398C67003B31C2 /* EasyBus */ = {
+			isa = PBXGroup;
+			children = (
+				1CF516D329399096003B31C2 /* EBEvent.swift */,
+				1CF516D72939936B003B31C2 /* EBObserver.swift */,
+				1CF516D92939944D003B31C2 /* EBBusManager.swift */,
+				1CF516DD2939A8C8003B31C2 /* EBBus.swift */,
+				1CF516D5293990EE003B31C2 /* EasyBus.swift */,
+			);
+			path = EasyBus;
+			sourceTree = "<group>";
+		};
 		D90AA849E5666698772AD80B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				C46DE2D057DA16354667DA05 /* Pods-SwiftUIHelloWorld.debug.xcconfig */,
 				52394CE19B53D3E69E9EEF21 /* Pods-SwiftUIHelloWorld.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -171,6 +216,7 @@
 				1C63BA04269FD6EE00ED403A /* LaunchScreen.storyboard in Resources */,
 				1C63BA01269FD6EE00ED403A /* Preview Assets.xcassets in Resources */,
 				1C63B9FE269FD6EE00ED403A /* Assets.xcassets in Resources */,
+				1C33B55F29373E0F0045B7F4 /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,8 +271,17 @@
 			files = (
 				1C63B9F8269FD6EC00ED403A /* AppDelegate.swift in Sources */,
 				1C63B9FA269FD6EC00ED403A /* SceneDelegate.swift in Sources */,
+				1CF516D82939936B003B31C2 /* EBObserver.swift in Sources */,
 				1C63BA1426A0170900ED403A /* HelloTableViewCell.swift in Sources */,
+				1CF516D6293990EE003B31C2 /* EasyBus.swift in Sources */,
+				1C33B56129373E2E0045B7F4 /* DataManager.swift in Sources */,
+				1CF516DA2939944D003B31C2 /* EBBusManager.swift in Sources */,
+				1CF516DE2939A8C8003B31C2 /* EBBus.swift in Sources */,
+				1C33B563293756CB0045B7F4 /* NetworkManager.swift in Sources */,
+				1CF516DC29399ED3003B31C2 /* EventConfig.swift in Sources */,
 				1C63B9FC269FD6EC00ED403A /* ContentView.swift in Sources */,
+				1CF516D12938BB6B003B31C2 /* RXManager.swift in Sources */,
+				1CF516D429399096003B31C2 /* EBEvent.swift in Sources */,
 				1C63BA11269FE5AB00ED403A /* MainViewController.swift in Sources */,
 				1C63BA1726A01BD800ED403A /* CellDataModel.swift in Sources */,
 			);

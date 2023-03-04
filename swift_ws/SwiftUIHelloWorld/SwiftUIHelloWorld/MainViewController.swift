@@ -10,19 +10,76 @@ import SnapKit
 
 import SwiftUI
 
+
+import RxSwift
+import RxCocoa
+
 class MainViewController: UIViewController {
     let tableView: UITableView = UITableView.init()
     var dataList: Array = Array<CellDataModel>.init()
     var headerView: UIView!
     
+    deinit {
+        self.disposeBus("Main")
+    }
+    
+    let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        
+        self.bus("Main").register("update") { arg in
+            print("Main recv:", arg ?? "err")
+        }
+        
+        self.bus("Main").register("delete") { arg in
+            print("Main recv:", arg ?? "err")
+        }
+        
+        self.bus.register("MainView") { arg in
+            print("recv:", arg ?? "err")
+        };
 
         createSubviews()
         
         refreshDataSource()
+        
+        testJson()
+
+        
+        let btn: UIButton = UIButton.init(type: .custom)
+        btn.frame = CGRect.init(x: 30, y: 30, width: 100, height: 30)
+        btn.backgroundColor = UIColor.white
+        btn.setTitle("click", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        self.view.addSubview(btn)
+        
+        btn.rx.tap.subscribe(onNext: {
+            print("btn click now")
+        }).disposed(by: disposeBag)
+        
+        testRx()
+        
+        var count: Int = 0
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) { tt in
+            let arg = "val-\(count)"
+            
+            let action = count % 3
+            switch action {
+            case 0:
+                self.bus.emit("MainView", arg)
+            case 1:
+                self.bus("Main").emit("update", "update \(arg)")
+            case 2:
+                self.bus("Main").emit("delete", "delete \(arg)")
+            default:
+                print("undefine")
+            }
+            
+            count += 1
+        }
     }
 }
 

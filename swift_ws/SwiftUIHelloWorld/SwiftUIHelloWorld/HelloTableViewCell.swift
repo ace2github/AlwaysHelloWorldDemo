@@ -13,6 +13,8 @@ class HelloTableViewCell: UITableViewCell {
     static let cellHeight: CGFloat = 100
     var titleLbl: UILabel!
     var imageV: UIImageView!
+    
+    static var counts: Int = 0
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -69,6 +71,8 @@ class HelloTableViewCell: UITableViewCell {
         if let url = model.url, let imgUrl = URL.init(string: url) {
             imageV.kf.setImage(with: .network(imgUrl))
         }
+        
+        self.bus("Main").emit("update", "CellUpdate")
     }
     
 }

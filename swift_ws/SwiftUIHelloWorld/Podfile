@@ -7,8 +7,23 @@ target 'SwiftUIHelloWorld' do
 
   # Pods for SwiftUIHelloWorld
 
+  # 相当于masonry
   pod 'SnapKit'
+  
+  # AFNetwork
+  # Moya
   pod 'Alamofire'
+  
+  # SDWebImage
   pod 'Kingfisher'
   
+  
+  # JSON - Model
+  pod 'SwiftyJSON'
+  pod 'HandyJSON', '~> 5.0.2'
+  
+  # 响应式编程
+  pod 'RxSwift', '6.5.0' # 核心框架
+  pod 'RxCocoa', '6.5.0' # UIKit的相关封装
+  pod 'RxDataSources' # 与UITableView和UICollectionView相关的绑定功能
 end
